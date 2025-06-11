@@ -8,37 +8,39 @@ import math
 model = mdb.models['Model-1']
 assembly = model.rootAssembly
 
-# ########### ------------------------------------- RESET ---------------------------------------------
-# # 기존 피쳐, 와이어, 커넥터 세트, 커넥터 섹션 삭제 함수
+# # # # # # # # # # # # RESET (If you want to reset and reconnect connectors, please turn ON this part.)
+# 
+# # # # # # Clear Function Codes
+# 
 # def clear_previous_features_and_sets():
-#     # 기존 커넥터 세트 삭제
+#     # ###Delete Connector Set
 #     for set_name in list(assembly.sets.keys()):
 #         if 'ConnectorSet' in set_name:
 #             del assembly.sets[set_name]
-    
-#     # 기존 피쳐 삭제
+# 
+#     # ###Delete Features
 #     for feat_name in list(assembly.features.keys()):
 #         if 'Wire' in feat_name:
 #             del assembly.features[feat_name]
-    
-#     # 기존 커넥터 섹션 삭제
+# 
+#     # ###Delete Connector Sections
 #     sections_to_delete = [section_name for section_name in model.sections.keys() if 'HingeConnectorSection_' in section_name]
 #     for section_name in sections_to_delete:
 #         del model.sections[section_name]
-        
-#     # 기존 Section Assignment 삭제 (이름으로 삭제)
+# 
+#     # ###Delete Section Assignments (!!Naming base, Please check the section names)
 #     assignments_to_delete = [i for i, assignment in enumerate(assembly.sectionAssignments) 
 #                              if 'HingeConnectorSection' in assignment.sectionName]
-    
-#     # 이름 조건에 맞는 Section Assignment 삭제
+# 
 #     for index in sorted(assignments_to_delete, reverse=True):
 #         del assembly.sectionAssignments[index]
-    
+# 
 #     print("Previous features, wire lines, connector sets, and connector sections have been cleared.")
-
-# # 피처, 와이어, 커넥터 세트, 커넥터 섹션 삭제
+# 
+# # # # # # # Clear Features, Wires, Connector Sets, Connector Sections
 # clear_previous_features_and_sets()
-# ########### ------------------------------------- RESET ---------------------------------------------
+# 
+# # # # # # # # # # # # RESET
 
 # Round Function
 def round_coordinates(node, precision=1):
@@ -46,6 +48,7 @@ def round_coordinates(node, precision=1):
     return tuple(round(coord, precision) for coord in node.coordinates)
 
 # Create Connector
+# !!!!!!Here you can set the stretching stiffness and rotational stiffness between connected edges.!!!!!!
 def create_connector_section(edge_id, num_connected_nodes):
     """커넥터 섹션을 생성하고 강성을 노드 수에 비례하여 설정"""
     Stretch_value = 1000000 / num_connected_nodes
@@ -63,10 +66,10 @@ def create_connector_section(edge_id, num_connected_nodes):
     return section_name
 
 
-
 ########### ------------------------------------- Manual Edge Selection ---------------------------------------------
+######## Please select the edges where you want to connect 
+######## and generate the SET with the name of "Selected Edges" (or whatever you want) in the Abaqus Interface
 
-# 선택된 엣지 세트로부터 메쉬 노드 추출
 manual_selection = 'SelectedEdges'
 selected_edges = assembly.sets[manual_selection].edges
 nodes_in_selected_edges = []
