@@ -6,28 +6,27 @@ import regionToolset
 # 모델과 파트 참조
 model = mdb.models['Model-1']
 
-# 재료 생성
 # Aluminium
 # material = model.Material(name='AL')
 # material.Density(table=((2.7e-9, ), ))
 # material.Elastic(table=((73100, 0.35), ))
-# # material.Plastic(table=((160,0),(340,0.3)))
+# material.Plastic(table=((160,0),(340,0.3)))
 
-# # Plywood
+# Plywood
 # material = model.Material(name='Ply')
 # material.Density(table=((5.52e-10, ), ))
 # material.Elastic(table=((7700, 0.25), ))
 
-# PDPPZ-100 Isotropic
-material = model.Material(name='PDPPZ-100')
-material.Density(table=((2e-10, ), ))
-material.Elastic(table=((316.5, 0.42), ))
+# Polypropylene-Elastic
+material = model.Material(name='PP-Elastic')
+material.Density(table=((9.05e-10, ), ))
+material.Elastic(table=((1134, 0.38), ))
 
-# PDPPZ-100 Orthotropic
-material = model.Material(name='PDPPZ-100_Ortho')
-material.Density(table=((2e-10, ), ))
-material.Elastic(type=ENGINEERING_CONSTANTS,table=((105.5, 105.5, 316.5, 0.42, 0.12, 0.12, 37.148, 74.615, 74.615), ))
-# material.Plastic(table=((3.1,0),(4.4,0.0269),(3.5,0.06)))
+# Polypropylene-Plastic
+material = model.Material(name='PP-Plastic')
+material.Density(table=((9.05e-10, ), ))
+material.Elastic(table=((1134, 0.38), ))
+material.Plastic(table=((10.64,0),(14.82,0.01),(23.38,0.04),(26.97,0.08),(28.06,0.24),(28.06,0.34),(49.76,0.94)))
 
 mat_thick = 5
 
@@ -35,7 +34,7 @@ mat_thick = 5
 # 섹션 생성(Shell, Thickness control)
 shell_section = model.HomogeneousShellSection(name='ShellSection',
                                               preIntegrate=OFF,
-                                              material='PDPPZ-100_Ortho',
+                                              material='PP-Elastic',
                                               thicknessType=UNIFORM,
                                               thickness=mat_thick,
                                               thicknessField='',
@@ -81,7 +80,7 @@ model.FrequencyStep(name='Frequency', previous='Initial', numEigen=10)
 
 # ############ Dynamic Implicit, Quasi-static
 model.ImplicitDynamicsStep(name='Quasi-static', previous='Frequency', timePeriod=10, nlgeom=ON, application=QUASI_STATIC, maxNumInc=1000)
-model.steps['Quasi-static'].setValues(initialInc=1e-5, minInc=1e-8)
+model.steps['Quasi-static'].setValues(initialInc=1e-3, minInc=1e-8)
 
 
 # ############ Amplitude Setting
