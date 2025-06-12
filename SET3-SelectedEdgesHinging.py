@@ -13,22 +13,18 @@ assembly = model.rootAssembly
 # # # # # # Clear Function Codes
 # 
 # def clear_previous_features_and_sets():
-#     # ###Delete Connector Set
 #     for set_name in list(assembly.sets.keys()):
 #         if 'ConnectorSet' in set_name:
 #             del assembly.sets[set_name]
 # 
-#     # ###Delete Features
 #     for feat_name in list(assembly.features.keys()):
 #         if 'Wire' in feat_name:
 #             del assembly.features[feat_name]
 # 
-#     # ###Delete Connector Sections
 #     sections_to_delete = [section_name for section_name in model.sections.keys() if 'HingeConnectorSection_' in section_name]
 #     for section_name in sections_to_delete:
 #         del model.sections[section_name]
 # 
-#     # ###Delete Section Assignments (!!Naming base, Please check the section names)
 #     assignments_to_delete = [i for i, assignment in enumerate(assembly.sectionAssignments) 
 #                              if 'HingeConnectorSection' in assignment.sectionName]
 # 
@@ -37,7 +33,6 @@ assembly = model.rootAssembly
 # 
 #     print("Previous features, wire lines, connector sets, and connector sections have been cleared.")
 # 
-# # # # # # # Clear Features, Wires, Connector Sets, Connector Sections
 # clear_previous_features_and_sets()
 # 
 # # # # # # # # # # # # RESET
