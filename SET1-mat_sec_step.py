@@ -3,7 +3,7 @@ from abaqusConstants import *
 from caeModules import *
 import regionToolset
 
-# 모델과 파트 참조
+# Referencing Model and Parts
 model = mdb.models['Model-1']
 
 # Aluminium
@@ -31,7 +31,7 @@ material.Plastic(table=((10.64,0),(14.82,0.01),(23.38,0.04),(26.97,0.08),(28.06,
 mat_thick = 5
 
 
-# 섹션 생성(Shell, Thickness control)
+# Section Generation (Shell elements)
 shell_section = model.HomogeneousShellSection(name='ShellSection',
                                               preIntegrate=OFF,
                                               material='PP-Elastic',
@@ -47,23 +47,23 @@ shell_section = model.HomogeneousShellSection(name='ShellSection',
                                               integrationRule=SIMPSON,
                                               numIntPts=5)
 
-# 섹션 생성(Solid)
+# Section Generation (Solid)
 solid_section = model.HomogeneousSolidSection(name='SolidSection',
                                               material='Ply',
                                               thickness=None)
 
-# 어셈블리 생성
+# Assembly Generation and Assignment
 assembly = model.rootAssembly
     
 for part_name in model.parts.keys():
     part = model.parts[part_name]
     
-    if part.cells:  # 셀이 존재하는 경우 솔리드 섹션 할당
-        region = part.Set(cells=part.cells, name=part_name + '_SolidSet')  # 셀 사용
-        part.SectionAssignment(region=region, sectionName='SolidSection')  # 솔리드 섹션 할당
+    if part.cells:  # Assignment
+        region = part.Set(cells=part.cells, name=part_name + '_SolidSet')  # if Cell case
+        part.SectionAssignment(region=region, sectionName='SolidSection')  # Assigning Solid Sections
     else:
-        region = part.Set(faces=part.faces, name=part_name + '_ShellSet')  # 면 사용
-        part.SectionAssignment(region=region, sectionName='ShellSection')  # 쉘 섹션 할당
+        region = part.Set(faces=part.faces, name=part_name + '_ShellSet')  # if Face case
+        part.SectionAssignment(region=region, sectionName='ShellSection')  # Assigning Shell Sections
     
     assembly.Instance(name=part_name + '_Inst', part=part, dependent=ON)
    
