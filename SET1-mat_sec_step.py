@@ -28,8 +28,8 @@ material.Density(table=((9.05e-10, ), ))
 material.Elastic(table=((1134, 0.38), ))
 material.Plastic(table=((10.64,0),(14.82,0.01),(23.38,0.04),(26.97,0.08),(28.06,0.24),(28.06,0.34),(49.76,0.94)))
 
+# Material Thickness (Shell elements only)
 mat_thick = 5
-
 
 # Section Generation (Shell elements)
 shell_section = model.HomogeneousShellSection(name='ShellSection',
@@ -88,3 +88,4 @@ model.TabularAmplitude(name='Load', timeSpan=STEP, data=((0,0), (10,1)))
 model.TabularAmplitude(name='Bias', timeSpan=STEP, data=((0,0), (0.1,1), (0.2,0)))
 
 print("SET1!!! Material, Section, Instance, and Step are completed")
+
