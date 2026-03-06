@@ -39,19 +39,19 @@ assembly = model.rootAssembly
 
 # Round Function
 def round_coordinates(node, precision=1):
-    """노드 좌표를 소수점 자리로 반올림"""
+    """Rounding Node Coordinates"""
     return tuple(round(coord, precision) for coord in node.coordinates)
 
 # Create Connector
 # !!!!!!Here you can set the stretching stiffness and rotational stiffness between connected edges.!!!!!!
 def create_connector_section(edge_id, num_connected_nodes):
-    """커넥터 섹션을 생성하고 강성을 노드 수에 비례하여 설정"""
+    """Generating Connector Sections, The stiffnesses are automatically considering the node counts"""
     Stretch_value = 1000000 / num_connected_nodes
-    Bending_value = 0.001 / num_connected_nodes  # 연결된 노드 수에 반비례하는 강성 값
+    Bending_value = 0.001 / num_connected_nodes
     elasticity = connectorBehavior.ConnectorElasticity(behavior=LINEAR, 
                                                        coupling=UNCOUPLED, 
-                                                       components=(1, 2, 3, 4, 5, 6),  # M1, M2, M3 성분 활성화
-                                                       table=((Stretch_value, Stretch_value, Stretch_value, Bending_value, Bending_value, Bending_value),))  # D44 값
+                                                       components=(1, 2, 3, 4, 5, 6),
+                                                       table=((Stretch_value, Stretch_value, Stretch_value, Bending_value, Bending_value, Bending_value),))
     section_name = f'HingeConnectorSection_Edge{edge_id}' + '-' + manual_selection
     connector_section = model.ConnectorSection(name=section_name,
                                                assembledType=NONE, 
@@ -70,7 +70,7 @@ selected_edges = assembly.sets[manual_selection].edges
 nodes_in_selected_edges = []
 ########### ------------------------------------- Manual Edge Selection ---------------------------------------------
 
-# 엣지에 있는 노드들을 수집
+
 for edge in selected_edges:
     nodes = edge.getNodes()
     for node in nodes:
@@ -127,7 +127,7 @@ for edge_id, edge in enumerate(selected_edges):
                     num_connected_nodes += 1
                     edge_connected_pairs.add((nodeA, nodeB))  # 현재 엣지에서 사용된 쌍 기록
                     
-    # 동일한 위치에 연결된 노드가 4개 이상인 경우에만 커넥터 섹션 생성
+    # 커넥터 쌍의 총 개수가 4개 이상인 경우에만 커넥터 섹션 생성 (즉 그 밑에는 커넥터 섹션으로 보지 않음)
     if num_connected_nodes > 3:
         # 커넥터 섹션 생성
         section_name = create_connector_section(edge_id, num_connected_nodes)
