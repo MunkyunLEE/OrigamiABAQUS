@@ -11,7 +11,8 @@ The codes are written in Python by referring to the Abaqus API [5].
 Therefore, it is recommended to first assign face attributes using this code and then control the division counts within the interface and remeshing the geometry. 
 One important point to note is that common edges of adjacent faces must be subdivided with the same number of nodes at the same positions.
 
-**SET3:** Generating Pin Joints Array (PJA) >>> The stiffness of each component -Tx, Ty, Tz, Mx, My, Mz- can be adjusted individually. Tx, Ty, and Tz represent the stiffness associated with translational (stretching) components, while Mx, My, and Mz correspond to the rotational stiffness components.
+**SET3:** Generating Pin Joints Array (**PJA**) >>> First, create edge sets that contain the edges you intend to connect in the ABAQUS interface. The key point is that if other edges overlap (or intersect) with the target connection edges (e.g., in a flat-folded configuration), you should separate the edge sets and run SET3 on each set individually.
+The stiffness of each component -Tx, Ty, Tz, Mx, My, Mz- can be adjusted individually. Tx, Ty, and Tz represent the stiffness associated with translational (stretching) components, while Mx, My, and Mz correspond to the rotational stiffness components.
 Therefore, if you wish to approximate an ideal (kinematic) crease behavior, Tx, Ty, and Tz should be set to extremely high values, while Mx, My, and Mz should be set close to zero.
 
 **SUP1:** Reset the PJA, Wire, Connector Set
