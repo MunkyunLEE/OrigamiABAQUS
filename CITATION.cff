@@ -17,18 +17,17 @@ abstract: >
   edge sets, and cleanup of connector objects.
 
 preferred-citation:
-  type: generic
+  type: report
   authors:
     - family-names: "Lee"
       given-names: "Munkyun"
   title: "Geometry and Mechanics of Multistable Origami Blocks"
   year: 2026
-  thesis-type: "PhD Thesis"
-  institution: "The University of Tokyo"
+  institution:
+    name: "The University of Tokyo"
   department: "Department of Architecture, Graduate School of Engineering"
   repository: "https://arxiv.org/abs/2603.16913"
-  status: "published"
-  notes: "Primary scholarly reference for this repository."
+  notes: "Doctoral Thesis"
 
 references:
   - type: article
