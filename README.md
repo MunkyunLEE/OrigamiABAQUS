@@ -41,6 +41,20 @@ Therefore, if you wish to approximate an ideal (kinematic) crease behavior, Tx, 
 
 **!!! PLEASE READ !!!**
 
+Here is the preferred BibTeX
+
+@phdthesis{Lee2026OrigamiBlocks,
+  author       = {Munkyun Lee},
+  title        = {Geometry and Mechanics of Multistable Origami Blocks},
+  school       = {The University of Tokyo},
+  year         = {2026},
+  month        = mar,
+  type         = {Doctoral Thesis},
+  note         = {Department of Architecture, Graduate School of Engineering},
+  url          = {https://arxiv.org/abs/2603.16913}
+}
+
+
 All the code appears to work, but I am aware that it is neither very efficient nor particularly clear 😭. This is mainly because I am not very familiar with Python and Abaqus. The code was written primarily for my own use, so if you find it inefficient, please feel free to rewrite and improve it as needed.
 I believe the key improvement is that many tasks can be done more efficiently and automatically by integrating Rhino/Grasshopper modeling—for example, performing meshing and defining boundary conditions during the modeling stage using STEP file data.
 (It will be one of the future works)
