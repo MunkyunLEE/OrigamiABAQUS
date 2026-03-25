@@ -26,7 +26,7 @@ Therefore, if you wish to approximate an ideal (kinematic) crease behavior, Tx, 
 \\DOI: https://doi.org/10.20898/j.iass.2024.015
 
 [2] Munkyun Lee, "Geometry and Mechanics of Multistable Origami Blocks", Doctoral Thesis, Department of Architecture, Graduate School of Engineering, The University of Tokyo, 2026.03
-\\DOI: https://doi.org/10.13140/RG.2.2.13891.05928
+\\DOI: [arXiv:2603.16913](https://doi.org/10.48550/arXiv.2603.16913)
   
 [3] Felix Dellinger, Martin Kilian, Munkyun Lee, Christian Muller, Georg Nawratil, Tomohiro Tachi, and Kiumars Sharifmoghaddam, “Snapping Deployable Toroids for Modular Gridshells”, ACM Trans. Graph., Vol.44, No.6, pp.235:1-21, ACM SIGGRAPH Asia 2025, Hong Kong, China, 2025.12
 \\DOI: https://doi.org/10.1145/3763808
