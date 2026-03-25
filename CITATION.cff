@@ -1,0 +1,83 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite the doctoral thesis below as the primary reference."
+title: "OrigamiABAQUS"
+type: software
+authors:
+  - family-names: "Lee"
+    given-names: "Munkyun"
+repository-code: "https://github.com/MunkyunLEE/OrigamiABAQUS"
+url: "https://github.com/MunkyunLEE/OrigamiABAQUS"
+license: "MIT"
+version: "v1.0.0"
+date-released: 2026-03-01
+abstract: >
+  Python scripts for Pin Joints Array (PJA)-based origami crease (hinge)
+  modeling in Abaqus simulation. The repository includes scripts for material
+  and step setup, meshing assistance, generation of pin-joint arrays on selected
+  edge sets, and cleanup of connector objects.
+
+preferred-citation:
+  type: generic
+  authors:
+    - family-names: "Lee"
+      given-names: "Munkyun"
+  title: "Geometry and Mechanics of Multistable Origami Blocks"
+  year: 2026
+  thesis-type: "PhD Thesis"
+  institution: "The University of Tokyo"
+  department: "Department of Architecture, Graduate School of Engineering"
+  repository: "https://arxiv.org/abs/2603.16913"
+  status: "published"
+  notes: "Primary scholarly reference for this repository."
+
+references:
+  - type: article
+    authors:
+      - family-names: "Lee"
+        given-names: "Munkyun"
+      - family-names: "Tachi"
+        given-names: "Tomohiro"
+    title: "Design and Evaluation of Compliant Hinges for Deployable Thick Origami Structures"
+    journal: "Journal of the International Association for Shell and Spatial Structures (IASS)"
+    year: 2024
+    volume: 65
+    issue: 4
+    start: 238
+    end: 247
+    doi: "10.20898/j.iass.2024.015"
+
+  - type: article
+    authors:
+      - family-names: "Dellinger"
+        given-names: "Felix"
+      - family-names: "Kilian"
+        given-names: "Martin"
+      - family-names: "Lee"
+        given-names: "Munkyun"
+      - family-names: "Muller"
+        given-names: "Christian"
+      - family-names: "Nawratil"
+        given-names: "Georg"
+      - family-names: "Tachi"
+        given-names: "Tomohiro"
+      - family-names: "Sharifmoghaddam"
+        given-names: "Kiumars"
+    title: "Snapping Deployable Toroids for Modular Gridshells"
+    journal: "ACM Transactions on Graphics"
+    year: 2025
+    volume: 44
+    issue: 6
+    doi: "10.1145/3763808"
+
+  - type: conference-paper
+    authors:
+      - family-names: "Lee"
+        given-names: "Munkyun"
+      - family-names: "Gattas"
+        given-names: "Joseph M."
+      - family-names: "Tachi"
+        given-names: "Tomohiro"
+    title: "Multistable Curved-crease Origami Blocks for Reconfigurable Modular Building System"
+    year: 2025
+    collection-title: "Proceedings of the International Association for Shell and Spatial Structures (IASS) Annual Symposia"
+    doi: "10.48550/arXiv.2509.07337"
